@@ -3,6 +3,16 @@
         <div>{{post?.id}}</div>
         <h3>{{post?.title}}</h3>
         <div>{{post?.body}}</div>
+        <div>
+            <button (click)="commentsData()">Comments</button>
+            <div class="main" *ngFor="let coment of comments">
+                <div class="cards" *ngIf="isComments">
+                <div>{{coment.id}}</div>
+                <div>{{coment.name}}</div>
+                <div>{{coment.body}}</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

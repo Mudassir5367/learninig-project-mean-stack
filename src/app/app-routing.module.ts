@@ -6,6 +6,7 @@ import { CardDeatilComponent } from './card-deatil/card-deatil.component';
 const routes: Routes = [
   {path: '', component:CardsComponent},
   {path: 'detail/:id', component:CardDeatilComponent},
+  {path: 'detail/:id/comments', component:CardDeatilComponent},
 ];
 
 @NgModule({

@@ -14,4 +14,7 @@ export class MainService {
    getPostById(id:number){
      return this.http.get(`${this.url}/${id}`)
    }
+   getComments(id:number){
+    return this.http.get(`${this.url}/${id}/comments`)
+   }
 }
