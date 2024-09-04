@@ -31,6 +31,6 @@ export class CardDeatilComponent implements OnInit {
   }
   commentsData() {
     this.isComments =!this.isComments;
-    this.router.navigate([`/detail/${this.id}/comments`]);
+    this.router.navigate([`/detail/${this.id}/comments`]); 
   }
 }
