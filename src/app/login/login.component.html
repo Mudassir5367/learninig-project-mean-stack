@@ -1,0 +1,14 @@
+<div class="mainSignup">
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+        <div>
+            <input class="inputs"  type="email" name="email" placeholder="Enter Email" formControlName="email">
+          </div>
+          <div>
+            <input class="inputs"  type="password" name="password" placeholder="Enter Password" formControlName="password">
+          </div>
+          <div>
+            <button class="signBtn" type="submit" >signUp</button>
+        </div>
+        <a [routerLink]="['/signup']"  >Already User/ Login</a>
+    </form>
+</div>

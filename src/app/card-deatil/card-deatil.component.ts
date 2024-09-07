@@ -12,6 +12,7 @@ export class CardDeatilComponent implements OnInit {
   post: any;
   comments: any[] = [];
   public isComments:boolean = false;
+  public isComment:boolean = false;
   constructor(
     private service: MainService,
     private route: ActivatedRoute,
@@ -29,8 +30,13 @@ export class CardDeatilComponent implements OnInit {
       console.log(this.comments);
     });
   }
-  commentsData() { 
-    this.isComments =!this.isComments;
+  commentsCard(){
+    console.log('Hi');
+    
+    this.isComments = true;
     this.router.navigate([`/detail/${this.id}/comments`]); 
+  }
+  commentsData() { 
+    this.isComments = !this.isComments;
   }
 }

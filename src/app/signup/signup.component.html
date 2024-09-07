@@ -1,0 +1,29 @@
+<div class="mainSignup">
+<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <div class="main">
+      <div>
+        <input class="inputs"  type="text" name="fullname" placeholder="Enter Full Name" formControlName="fullname">
+      </div>
+      <div>
+        <input class="inputs"  type="text" name="username" placeholder="Enter Username" formControlName="username">
+      </div>
+      <div>
+        <input class="inputs"  type="text" name="phone" placeholder="Enter Phone" formControlName="phone">
+      </div>
+      <div>
+        <input class="inputs"  type="email" name="email" placeholder="Enter Email" formControlName="email">
+      </div>
+      <div>
+        <input class="inputs"  type="password" name="password" placeholder="Enter Password" formControlName="password">
+      </div>
+      <div>
+        <input class="inputs"  type="password" name="fullname" placeholder="Confirm Password" formControlName="confirmPassword">
+      </div>
+      <div>
+        <button class="signBtn" type="submit" >signUp</button>
+    </div>
+    <a [routerLink]="['/login']"  >Already User/ Login</a>
+    </div>
+  </form>
+</div>
+  
