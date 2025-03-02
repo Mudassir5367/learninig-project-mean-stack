@@ -4,13 +4,14 @@ import { CardsComponent } from './cards/cards.component';
 import { CardDeatilComponent } from './card-deatil/card-deatil.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: '', component:CardsComponent},
-  {path: 'detail/:id', component:CardDeatilComponent},
-  {path: 'detail/:id/comments', component:CardDeatilComponent},
-  {path: 'login', component:LoginComponent},
-  {path: 'signup', component:SignupComponent},
+  {path: 'detail/:id', component:CardDeatilComponent, canActivate:[authGuard]},
+  {path: 'detail/:id/comments', component:CardDeatilComponent, canActivate:[authGuard]},
+  {path: 'login', component:LoginComponent, canActivate:[authGuard] },
+  {path: 'signup', component:SignupComponent, canActivate:[authGuard]},
 ];
 
 @NgModule({

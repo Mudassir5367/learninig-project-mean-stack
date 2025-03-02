@@ -9,7 +9,7 @@ import { LocalStorageService } from '../localStorage-service/local-storage.servi
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  formData!:FormGroup
+  formData! :FormGroup
 
   constructor(
     private fb:FormBuilder,
@@ -18,7 +18,7 @@ export class LoginComponent {
     private storageService:LocalStorageService
   ) { 
     this.formData = this.fb.group({
-      email: ['',Validators.required, Validators],
+      email: ['', [Validators.required, Validators.email]],
       password: ['',Validators.required],
     })
   }
@@ -26,8 +26,8 @@ export class LoginComponent {
     if(this.formData.invalid){
       return
     }else{
-      this.formData = this.formData?.value
-      this.mainService.login(this.formData).subscribe((res:any)=>{
+      const formValue = this.formData.value
+      this.mainService.login(formValue).subscribe((res:any)=>{
         console.log('login', res);
 
         if(res.success == true){
@@ -41,7 +41,7 @@ export class LoginComponent {
         }
         
       })
-      console.log(this.formData);
+      console.log(formValue);
       
     }
   }
