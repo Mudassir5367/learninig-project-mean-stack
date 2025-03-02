@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MainService } from '../main.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,16 +15,17 @@ formData!:FormGroup
   constructor(
     private fb:FormBuilder,
     private service:MainService,
-    private http:HttpClient
+    private http:HttpClient,
+    private router:Router
 
   ) { 
     this.formData = this.fb.group({
       fullname: ['', Validators.required],
       username: ['', Validators.required],
-      phone: ['', Validators.required],
+      // phone: ['', Validators.required],
       email: ['',Validators.required],
       password: ['',Validators.required],
-      confirmPassword: ['', Validators.required]
+      // confirmPassword: ['', Validators.required]
     })
   }
   onSubmit(){
@@ -31,12 +33,9 @@ formData!:FormGroup
       return
     }else{
       this.formData = this.formData?.value
-      this.http.post('http://localhost:5002/api/register', this.formData, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      // console.log(this.formData);
-      
+    this.service.registerUser(this.formData).subscribe((res)=>{
+      this.router.navigate(['/login'])
+      console.log('res',res);      
     })
     }
   }

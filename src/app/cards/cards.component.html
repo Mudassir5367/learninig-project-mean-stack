@@ -1,3 +1,18 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a routerLink = '/'>Home</a>
+        </div>
+        <div class="nav-right" *ngIf = '!isLoggedIn'>
+            <a routerLink = '/login' >Login</a>
+            <a routerLink = '/signup'>Signup</a>
+        </div>
+        <div class="nav-right" *ngIf = 'isLoggedIn'>
+            <a (click) = 'Logout()' >Logout</a>
+        </div>
+    </div>
+</nav>
+
 <div class="main">
     <div class="cards" *ngFor="let post of posts" (click)="showSingleCard(post.id)">
         <div>{{post.id}}</div>
@@ -5,5 +20,3 @@
         <div>{{post.body}}</div> 
     </div>
 </div>
-
-

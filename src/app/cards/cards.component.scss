@@ -1,3 +1,25 @@
+.navbar {
+    background-color: indigo;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left a, .nav-right a {
+    color: gold;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 15px;
+}
 .main {
     display: flex;
     flex-wrap: wrap;
@@ -14,6 +36,9 @@
     padding: 20px;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
     margin: 10px; /* Adjusted margin */
+}
+.nav-right, .nav-left{
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
