@@ -19,17 +19,16 @@ constructor(
 ngOnInit(){
   this.mainSrvice.getPosts().subscribe((post:any)=>{
     this.posts = post;
-    // console.log(post);   
+    console.log(post);   
     this.isLoggedIn = this.storageService.getItem<boolean>('userId') ?? false;
+    // this.mainSrvice.dataToBackend(this.posts).subscribe((res:any)=>{
+    //   console.log('data to backend',res);
+      
+    // })
   })
 }
 showSingleCard(id:number){
   console.log(id);
   this.route.navigate(['/detail/'+id])  
-}
-Logout(){
-  this.storageService.clear()
-  this.route.navigate(['/'])
-  this.isLoggedIn = false;
 }
 }

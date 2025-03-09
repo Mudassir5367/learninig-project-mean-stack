@@ -5,6 +5,8 @@ import { CardDeatilComponent } from './card-deatil/card-deatil.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { authGuard } from './auth.guard';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 const routes: Routes = [
   {path: '', component:CardsComponent},
@@ -12,6 +14,8 @@ const routes: Routes = [
   {path: 'detail/:id/comments', component:CardDeatilComponent, canActivate:[authGuard]},
   {path: 'login', component:LoginComponent, canActivate:[authGuard] },
   {path: 'signup', component:SignupComponent, canActivate:[authGuard]},
+  {path: 'create-post', component:CreatePostComponent, canActivate:[authGuard]},
+  {path: 'timeline', component:TimelineComponent, canActivate:[authGuard]},
 ];
 
 @NgModule({

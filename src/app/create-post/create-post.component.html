@@ -1,0 +1,19 @@
+<div class="mainSignup">
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+        <div>
+            <input class="inputs" type="text" name="id" placeholder="Enter ID" formControlName="id">
+        </div>
+        <!-- <div>
+            <input class="inputs" type="text" name="user" placeholder="Enter User" formControlName="userId">
+        </div> -->
+        <div>
+            <input class="inputs" type="text" name="title" placeholder="Enter Title" formControlName="title">
+        </div>
+        <div>
+            <textarea class="inputs" name="description" placeholder="Enter Description" formControlName="body"></textarea>
+        </div>
+        <div>
+            <button class="signBtn" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from './localStorage-service/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
 
-  constructor(private http:HttpClient) { }
+  constructor(
+  private http:HttpClient,
+  private storageService:LocalStorageService
+) { }
    url = "https://jsonplaceholder.typicode.com/posts"
    url1 = "http://localhost:3000/api"
-   getPosts() {
+   getPosts() { // from json placeholder url
      return this.http.get(this.url)
    }
    getPostById(id:number){
@@ -31,4 +35,16 @@ export class MainService {
     return this.http.post(url,data)
   }
 
+  dataToBackend(body:any){
+    const url = `${this.url1}/allPosts`
+    return this.http.post(url, body)
+  }
+  getAllPosts(){
+    const token = this.storageService.getItem('token')
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+    const url = `${this.url1}/getAllPosts`;
+    return this.http.get(url, {headers})
+  }
 }
