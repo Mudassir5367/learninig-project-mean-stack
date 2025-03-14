@@ -36,6 +36,11 @@ export class MainService {
   }
 
   dataToBackend(body:any){
+    const token = this.storageService.getItem('token')
+    const headers = new HttpHeaders({
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}` ,
+    });
     const url = `${this.url1}/allPosts`
     return this.http.post(url, body)
   }
