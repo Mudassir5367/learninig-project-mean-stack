@@ -10,10 +10,12 @@ import { Router } from '@angular/router';
 })
 export class CreatePostComponent {
   formData: FormGroup;
+  public error:string = '';
+  public msg:string = '';
 
   constructor(
     private fb: FormBuilder,
-    private mainSrvice:MainService,
+    private mainService:MainService,
     private router:Router
   ) {
     this.formData = this.fb.group({
@@ -26,14 +28,30 @@ export class CreatePostComponent {
 
   onSubmit() {
     if (this.formData.valid) {
-      const data = this.formData.value
-      this.mainSrvice.dataToBackend(data).subscribe((res:any)=>{
-        // console.log('data to backend',res);
-        if(res.success != false)
-        this.router.navigate(['/'])
-      })
+      const data = this.formData.value;
+      
+      this.mainService.dataToBackend(data).subscribe(
+        (res: any) => {          
+          if (res.success === false) {
+            this.error = res.msg || 'An error occurred';
+            return; 
+          }
+          this.router.navigate(['/timeline']);
+        },
+        (error) => {
+          console.error('Error response:', error);
+          
+          // Handle HTTP errors properly
+          if (error.status === 400 || error.status === 401) {
+            this.error = error.error?.msg || 'Invalid request';
+          } else {
+            this.error = 'Something went wrong. Please try again.';
+          }
+        }
+      );
     } else {
       console.log('Form is invalid');
+      this.error = 'Please fill all required fields correctly.';
     }
   }
 }

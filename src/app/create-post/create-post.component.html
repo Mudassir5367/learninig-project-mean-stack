@@ -3,6 +3,7 @@
         <div>
             <input class="inputs" type="text" name="id" placeholder="Enter ID" formControlName="id">
         </div>
+        <div style="color: orangered;" *ngIf="error.length || msg.length">{{error}}</div>
         <!-- <div>
             <input class="inputs" type="text" name="user" placeholder="Enter User" formControlName="userId">
         </div> -->

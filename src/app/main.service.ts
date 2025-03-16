@@ -41,8 +41,8 @@ export class MainService {
       'Accept': 'application/json',
       'Authorization': `Bearer ${token}` ,
     });
-    const url = `${this.url1}/allPosts`
-    return this.http.post(url, body)
+    const url = `${this.url1}/customPosts`
+    return this.http.post(url, body, {headers})
   }
   getAllPosts(){
     const token = this.storageService.getItem('token')

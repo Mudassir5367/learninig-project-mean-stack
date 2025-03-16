@@ -36,6 +36,7 @@ export class LoginComponent {
           this.storageService.setItem('userId',res._id);
           this.storageService.setItem('token',res.token);
           this.router.navigate(['/'])
+          window.location.reload(); 
         }else{
           this.router.navigate(['/login'])
         }
