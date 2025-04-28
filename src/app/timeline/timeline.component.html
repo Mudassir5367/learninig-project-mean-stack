@@ -1,8 +1,11 @@
 
-<div class="main">
-    <div class="cards" *ngFor="let post of timelimePosts" >
-        <div>{{post?.id}}</div>
-        <h3>{{post?.title}}</h3>
-        <div>{{post?.body}}</div> 
-    </div>
+<div class="main" *ngIf = "timelimePosts.length">
+        <div class="cards" *ngFor="let post of timelimePosts" >
+            <!-- <div>{{post?.id}}</div> -->
+            <h3>{{post?.title}}</h3>
+            <div>{{post?.body}}</div>
+        </div>
+</div>
+<div *ngIf="timelimePosts.length == 0" class="main">
+    <p>No Post Found!</p>
 </div>
